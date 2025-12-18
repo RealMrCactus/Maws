@@ -1,3 +1,5 @@
+> **⚠️ WARNING:** Oxidzr is currently unfinished, it should be finished by Dec 25th at most.
+
 # Oxidzr
 
 **A progressive data destruction tool for high-entropy drive wiping in time-critical scenarios.**
