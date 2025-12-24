@@ -1,4 +1,4 @@
-> **⚠️ WARNING:** Oxidzr is currently unfinished, it should be finished by Dec 25th at most.
+> **⚠️ WARNING:** Oxidzr is currently unfinished, it should be finished by January 1st at most.
 
 # Oxidzr
 
