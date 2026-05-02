@@ -1,13 +1,13 @@
-> **⚠️ WARNING:** Oxidzr is currently unfinished.
-# Oxidzr
+> **⚠️ WARNING:** Maws is currently unfinished.
+# Maws
 
 **A progressive data destruction tool for high-entropy drive wiping in time-critical scenarios.**
 
-> **⚠️ WARNING:** Oxidzr is a destructive tool. It is designed to permanently destroy data. There is no undo, no recovery, and no "Are you sure?" safety net once execution begins. Use with extreme caution.
+> **⚠️ WARNING:** Maws is a destructive tool. It is designed to permanently destroy data. There is no undo, no recovery, and no "Are you sure?" safety net once execution begins. Use with extreme caution.
 
-## 📖 What is Oxidzr?
+## 📖 What is Maws?
 
-Oxidzr is a specialized alternative to standard tools like `shred`. While `shred` wipes data linearly (Sector 1, Sector 2, Sector 3...), Oxidzr uses a **Recursive Halving Algorithm** to destroy data structurally across the entire span of the drive simultaneously.
+Maws is a specialized alternative to standard tools like `shred`. While `shred` wipes data linearly (Sector 1, Sector 2, Sector 3...), Maws uses a **Recursive Halving Algorithm** to destroy data structurally across the entire span of the drive simultaneously.
 
 It is designed for scenarios where the time available to wipe a drive is undefined or potentially extremely short.
 
@@ -16,17 +16,17 @@ It is designed for scenarios where the time available to wipe a drive is undefin
 If you have a 1TB drive and only 5 minutes to wipe it before power is lost:
 
   * **Linear Wipe (`shred`):** You destroy the first 5% of the drive. The remaining 95% is perfectly intact and recoverable.
-  * **Oxidzr:** You destroy 5% of the drive, but that damage is distributed evenly as millions of "bullet holes" across the entire disk surface.
+  * **Maws:** You destroy 5% of the drive, but that damage is distributed evenly as millions of "bullet holes" across the entire disk surface.
 
 ## ⚙️ How It Works
 
-Oxidzr employs a **"Swiss Cheese" strategy** to maximize file corruption speed.
+Maws employs a **"Swiss Cheese" strategy** to maximize file corruption speed.
 
 1.  **Decapitation (0-1 Seconds):**
     Immediately overwrites the partition table (MBR/GPT) and backup headers at the end of the drive. The drive is instantly unmountable.
 
 2.  **Recursive Halving (The Loop):**
-    Instead of writing sequentially, Oxidzr writes chunks of high-entropy random data at diminishing intervals. It creates a coarse grid of destruction that gets finer with every pass:
+    Instead of writing sequentially, Maws writes chunks of high-entropy random data at diminishing intervals. It creates a coarse grid of destruction that gets finer with every pass:
 
       * **Pass 1:** Writes a block every **set stride** (e.g., every 256MB).
       * **Pass 2:** Halves the stride (128MB). Writes a block in the *middle* of the previous gaps.
@@ -64,10 +64,10 @@ cargo build --release
 
 ```bash
 # Basic usage (Auto-detects HDD/SSD)
-sudo ./oxidzr /dev/sdX
+sudo ./Maws /dev/sdX
 
 # View help
-sudo ./oxidzr --help
+sudo ./Maws --help
 ```
 
 ## ⚖️ License
