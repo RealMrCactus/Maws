@@ -64,10 +64,10 @@ cargo build --release
 
 ```bash
 # Basic usage (Auto-detects HDD/SSD)
-sudo ./Maws /dev/sdX
+sudo ./maws /dev/sdX
 
 # View help
-sudo ./Maws --help
+sudo ./maws --help
 ```
 
 ## ⚖️ License
