@@ -1,4 +1,4 @@
-> **⚠️ WARNING:** Maws is currently unfinished.
+> **⚠️ WARNING:** Maws is a destructive tool.
 # Maws
 
 **A progressive data destruction tool for high-entropy drive wiping in time-critical scenarios.**
