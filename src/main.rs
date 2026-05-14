@@ -40,7 +40,15 @@ struct Args {
 
 macro_rules! read_sysfs {
     ($dev:expr, $file:expr) => {{
-        let path = format!("/sys/block/{}/{}", $dev, $file);
+        let dev_str = $dev.to_string();
+        // Strip trailing digits to get the parent drive (e.g. "vda5" -> "vda")
+        let parent = dev_str.trim_end_matches(|c: char| c.is_ascii_digit());
+        let path = if parent != dev_str {
+            // It's a partition — nest under the parent drive
+            format!("/sys/block/{}/{}/{}", parent, dev_str, $file)
+        } else {
+            format!("/sys/block/{}/{}", dev_str, $file)
+        };
         let content = std::fs::read_to_string(&path)
             .unwrap_or_else(|_| panic!("Failed to read sysfs path: {}", path));
         content
